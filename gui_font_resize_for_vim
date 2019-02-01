@@ -1,0 +1,29 @@
+function! AdjustFontSize(amount)
+  if has("gui") 
+    let font_data_list = split(&guifont)
+	let font_data_list[1] = substitute(font_data_list[1], 'px', '', '')
+	if (a:amount == 2)
+		let font_data_list[1] = font_data_list[1] + 2
+	else
+		let font_data_list[1] = font_data_list[1] - 2
+	endif
+	let newfont = join(font_data_list, " ")
+	let newfont = newfont . "px"
+    let &guifont = newfont
+  else
+    echoerr "You need to run the GTK2 version of Vim to use this function."
+  endif
+endfunction
+
+function! LargerFont()
+  call AdjustFontSize(2)
+endfunction
+command! LargerFont call LargerFont()
+
+function! SmallerFont()
+  call AdjustFontSize(-2)
+endfunction
+command! SmallerFont call SmallerFont()
+"mappong for font changing
+nmap <A-=> :LargerFont<CR>
+nmap <A--> :SmallerFont<CR>
