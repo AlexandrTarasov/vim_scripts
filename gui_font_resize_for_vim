@@ -15,15 +15,6 @@ function! AdjustFontSize(amount)
   endif
 endfunction
 
-function! LargerFont()
-  call AdjustFontSize(2)
-endfunction
-command! LargerFont call LargerFont()
-
-function! SmallerFont()
-  call AdjustFontSize(-2)
-endfunction
-command! SmallerFont call SmallerFont()
 "mappong for font changing
-nmap <A-=> :LargerFont<CR>
-nmap <A--> :SmallerFont<CR>
+nmap <A-=> :call AdjustFontSize(2)<CR>
+nmap <A--> :call AdjustFontSize(-2)<CR>
