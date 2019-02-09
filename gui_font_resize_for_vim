@@ -1,3 +1,5 @@
+set guifont=Monospace\ 16px
+
 function! AdjustFontSize(amount)
   if has("gui") 
     let font_data_list = split(&guifont)
